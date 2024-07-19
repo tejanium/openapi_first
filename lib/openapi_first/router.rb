@@ -8,7 +8,7 @@ module OpenapiFirst
   # Router can map requests / responses to their API definition
   class Router
     # Returned by {#match}
-    RequestMatch = Data.define(:request_definition, :params, :error, :responses) do
+    RequestMatch = ::Data.define(:request_definition, :params, :error, :responses) do
       def match_response(status:, content_type:)
         FindResponse.call(responses, status, content_type, request_method: request_definition.request_method,
                                                            path: request_definition.path)
@@ -16,7 +16,7 @@ module OpenapiFirst
     end
 
     # Returned by {#routes} to introspect all routes
-    Route = Data.define(:path, :request_method, :requests, :responses)
+    Route = ::Data.define(:path, :request_method, :requests, :responses)
 
     NOT_FOUND = RequestMatch.new(request_definition: nil, params: nil, responses: nil, error: Failure.new(:not_found))
     private_constant :NOT_FOUND

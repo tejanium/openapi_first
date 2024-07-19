@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module OpenapiFirst
-  ParsedResponse = Data.define(:body, :headers)
+  ParsedResponse = ::Data.define(:body, :headers)
 
   # Parse a response
   class ResponseParser

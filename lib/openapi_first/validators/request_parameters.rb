@@ -3,28 +3,28 @@
 module OpenapiFirst
   module Validators
     class RequestParameters
-      RequestHeaders = Data.define(:schema) do
+      RequestHeaders = ::Data.define(:schema) do
         def call(parsed_values)
           validation = schema.validate(parsed_values[:headers])
           Failure.fail!(:invalid_header, errors: validation.errors) if validation.error?
         end
       end
 
-      Path = Data.define(:schema) do
+      Path = ::Data.define(:schema) do
         def call(parsed_values)
           validation = schema.validate(parsed_values[:path])
           Failure.fail!(:invalid_path, errors: validation.errors) if validation.error?
         end
       end
 
-      Query = Data.define(:schema) do
+      Query = ::Data.define(:schema) do
         def call(parsed_values)
           validation = schema.validate(parsed_values[:query])
           Failure.fail!(:invalid_query, errors: validation.errors) if validation.error?
         end
       end
 
-      RequestCookies = Data.define(:schema) do
+      RequestCookies = ::Data.define(:schema) do
         def call(parsed_values)
           validation = schema.validate(parsed_values[:cookies])
           Failure.fail!(:invalid_cookie, errors: validation.errors) if validation.error?

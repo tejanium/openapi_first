@@ -6,7 +6,7 @@ module OpenapiFirst
   class Router
     # @visibility private
     module FindResponse
-      Match = Data.define(:response, :error)
+      Match = ::Data.define(:response, :error)
 
       def self.call(responses, status, content_type, request_method:, path:)
         contents = find_status(responses, status)
